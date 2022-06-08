@@ -3,7 +3,7 @@
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     grid-gap: 20px;
     width: 90vw;
-    margin: auto;
+    margin: 60px auto;
 }
 
 .jersey-link {
@@ -11,10 +11,17 @@
     text-decoration: none;
 }
 
-.jersey-box:hover > .description {
-    text-decoration: underline;
+.description {
+    text-decoration: none;
+    line-height: 28px;
+    transition: .4s;
+    font-family: Helvetica, sans-serif;
 }
 
+.jersey-box:hover>.description {
+    text-decoration: underline;
+    text-underline-offset: 4px;
+}
 
 .jersey-image {
     height: 250px;
@@ -37,4 +44,11 @@
     margin: auto;
     margin-top: 10px;
     color: rgb(246, 0, 29);
+}
+
+.search-container {
+    border-bottom: 1px solid rgb(179, 179, 179);
+    border-top: 1px solid rgb(179, 179, 179);
+    padding: 20px 0;
+    text-align: right;
 }

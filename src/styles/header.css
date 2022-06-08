@@ -1,17 +1,38 @@
 .navbar {
-    display: flex;
+    display: grid;
     justify-content: center;
+    grid-template-rows: 50px 90px;
+    margin-bottom: 10px;
 }
 
 .navbar ul {
     width: 40vw;
     display: flex;
     justify-content: space-around;
+    align-items: center;
+    margin: 0;
+    padding: 0;
 }
+
 .navbar ul li {
     list-style: none;
 }
+
 .navbar ul li a {
+    font-size: 16px;
     text-decoration: none;
-    color: black;
+    color: rgb(99, 99, 99);
+}
+
+.navbar ul li a:hover {
+    text-decoration: underline;
+    text-underline-offset: 4px;
+}
+
+.navbar h3 {
+    font-size: 22px;
+    margin: auto;
+    margin-bottom: none;
+    display: flex; 
+    align-self: flex-end;
 }
