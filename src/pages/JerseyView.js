@@ -6,7 +6,7 @@ import Review from '../components/Review';
 function JerseyView(props) {
 
   const [jersey, setJersey] = useState([]);
-  const [size, setSize] = useState('S');
+  // const [size, setSize] = useState('S');
 
   const params = useParams();
   const jerseyId = params.id;
@@ -27,15 +27,12 @@ function JerseyView(props) {
     setSize(data);
   }
 
-  const handleSubmit = async () => {
-
-  }
-
   useEffect(() => {
-    getJersey(url);
+    getJersey();
     getSize();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
-console.log(size)
+
   return (
     <>
       <div className="view-jersey-container">
