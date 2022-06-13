@@ -48,8 +48,8 @@ function Review(props) {
     }
 
     useEffect(() => {
-        const response = axios.get(`http://localhost:4000/jerseys/${jerseyId}/review`, { headers: { "Content-Type": "application/json" } })
         getReviews();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     const allReviews = reviews.data;
