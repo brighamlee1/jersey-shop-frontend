@@ -8,7 +8,7 @@ function Header() {
 
     const handleLogout = async () => {
         const url = 'http://localhost:4000/auth/logout';
-        await axios.post(url, { headers: { "Content-Type": "application/json" } });
+        await axios.get(url, { headers: { "Content-Type": "application/json" } });
         navigate("/login");
     }
 
