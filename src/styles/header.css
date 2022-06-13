@@ -2,7 +2,8 @@
     display: grid;
     justify-content: center;
     grid-template-rows: 50px 90px;
-    margin-bottom: 10px;
+    margin-bottom: px;
+    border-bottom: 1px solid rgb(179, 179, 179);
 }
 
 .navbar ul {
@@ -30,9 +31,22 @@
 }
 
 .navbar h3 {
-    font-size: 22px;
+    font-size: 24px;
     margin: auto;
     margin-bottom: none;
-    display: flex; 
+    display: flex;
     align-self: flex-end;
+    font-family: 'PT Mono', monospace;
+}
+
+@media screen and (max-width: 775px) {
+    .navbar ul {
+        width: 60vw;
+    }
+}
+
+@media screen and (max-width: 550px) {
+    .navbar ul {
+        width: 90vw;
+    }
 }

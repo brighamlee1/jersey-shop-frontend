@@ -1,28 +1,28 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
 import '../styles/register.css';
 
-function Register(props) {
+function Login(props) {
 
     const [data, setData] = useState({
-        username: '',
         email: '',
         password: ''
     })
 
-    const navigate = useNavigate();
 
     const handleChange = ({ currentTarget: input }) => {
         setData({ ...data, [input.name]: input.value })
     }
 
+    const navigate = useNavigate();
+
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const url = 'http://localhost:4000/auth/register';
-            await axios.post(url, data, { headers: { "Content-Type": "application/json" } })
-            navigate("/login")
+            const url = 'http://localhost:4000/auth/login';
+            await axios.post(url, data, { headers: { "Content-Type": "application/json" } });
+            navigate("/jerseys")
         } catch (error) {
             console.log(error);
         }
@@ -31,20 +31,8 @@ function Register(props) {
     return (
         <>
             <div className="signup-container">
-                <h1>Register</h1>
+                <h1>Login</h1>
                 <form onSubmit={handleSubmit}>
-                    <div className="input-box">
-                        <label>Username</label>
-                        <input
-                            className="signup-inputs"
-                            type="text"
-                            name="username"
-                            value={data.username}
-                            onChange={handleChange}
-                            required
-                        >
-                        </input>
-                    </div>
                     <div className="input-box">
                         <label>Email</label>
                         <input
@@ -69,12 +57,12 @@ function Register(props) {
                         >
                         </input>
                     </div>
-                    <input type="submit" value="Register" className="signup-button" />
+                    <input type="submit" value="Login" className="signup-button" />
                 </form>
             </div>
-            <h3 className="signup-text">Already have an account? Click <span><Link to="/login">here</Link> </span> to login.</h3>
+            <h3 className="signup-text">Don't have an account? Click <span><Link to="/register">here</Link> </span> to create an account.</h3>
         </>
     )
 }
 
-export default Register;
+export default Login;

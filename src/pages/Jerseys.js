@@ -12,9 +12,9 @@ function Jerseys(props) {
         })
     }
     )
-
+    const url = props.url + '/jerseys';
     const getJerseysData = async () => {
-        const response = await fetch(props.URL + '/jerseys');
+        const response = await fetch(url);
         const data = await response.json();
         setJerseys(data.sort((a, b) => {
             return a.name > b.name ? 1 : -1
@@ -57,33 +57,36 @@ function Jerseys(props) {
                 return a.price > b.price ? 1 : -1
             });
             setJerseys(sortedLowToHigh);
-        };
+        }
     }
 
     useEffect(() => {
-        getJerseysData();
+        getJerseysData(url);
     }, []);
 
     return (
         <>
-            <div className="search-container">
-                <span>
-                    <label>Sort By: </label>
-                    <select onChange={handleSort}>
-                        <option value="A-Z">A-Z</option>
-                        <option value="Z-A">Z-A</option>
-                        <option value="Price, Lowest To Highest">Price, Lowest To Highest</option>
-                        <option value="Price, Highest To Lowest">Price, Highest To Lowest</option>
-                    </select>
-                </span>
-                <span>Search</span>
-                <input className="search" onChange={handleChange} />
+            <div className="search-big-container">
+                <div className="search-container">
+                    <span className="sort">
+                        <label className="sort-label">Sort By: </label>
+                        <select onChange={handleSort}>
+                            <option value="A-Z">A-Z</option>
+                            <option value="Z-A">Z-A</option>
+                            <option value="Price, Lowest To Highest">Price, Lowest To Highest</option>
+                            <option value="Price, Highest To Lowest">Price, Highest To Lowest</option>
+                        </select>
+                    </span>
+                    <span className="search-box"> <label className="search-label">Search:</label>
+                        <input className="search" onChange={handleChange} />
+                    </span>
+                </div>
             </div>
             <div className="jerseys-container">
                 {filterData.map((jersey, idx) => (
                     <>
-                        <Link className="jersey-link" to={`/jerseys/${jersey._id}`} key={idx} onClick={onClick}>
-                            <div className="jersey-box" key={jersey.name}>
+                        <Link className="jersey-link" to={`/jerseys/${jersey._id}`} key={jersey.name} onClick={onClick}>
+                            <div className="jersey-box" key={idx}>
                                 <img className="jersey-image" src={jersey.image} alt={jersey.team} />
                                 <h2 className="description">{jersey.name} {jersey.team} Jersey</h2>
                                 <p className="price">${jersey.price}</p>
