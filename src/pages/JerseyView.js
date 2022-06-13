@@ -19,17 +19,16 @@ function JerseyView(props) {
     setJersey(data);
   }
 
-  const url2 = `http://localhost:4000/jerseys/${jerseyId}`
+  // const url2 = `http://localhost:4000/jerseys/${jerseyId}`
 
-  const getSize = async () => {
-    const response = await fetch(url2);
-    const data = await response.json();
-    setSize(data);
-  }
+  // const getSize = async () => {
+  //   const response = await fetch(url2);
+  //   const data = await response.json();
+  //   setSize(data);
+  // }
 
   useEffect(() => {
     getJersey();
-    getSize();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
