@@ -48,6 +48,7 @@ function Review(props) {
     }
 
     useEffect(() => {
+        const response = await axios.get(`http://localhost:4000/jerseys/${jerseyId}/review`, { headers: { "Content-Type": "application/json" } })
         getReviews();
     }, []);
 
