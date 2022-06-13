@@ -3,7 +3,9 @@ import { Link } from 'react-router-dom';
 import '../styles/jerseys.css';
 
 function Jerseys(props) {
-    const [jerseys, setJerseys] = useState([]);
+    const initialState = [];
+
+    const [jerseys, setJerseys] = useState(initialState);
     const [search, setSearch] = useState('');
 
     const filterData = jerseys.filter(jersey => {
@@ -25,6 +27,7 @@ function Jerseys(props) {
         await e.preventDefault();
         setSearch(e.target.value.toLowerCase());
         console.log(e.target.value.toLowerCase())
+        console.log(filterData)
     }
 
     const onClick = () => {
@@ -83,19 +86,21 @@ function Jerseys(props) {
                     </span>
                 </div>
             </div>
-            <div className="jerseys-container">
-                {filterData.map((jersey, idx) => (
-                    <>
-                        <Link className="jersey-link" to={`/jerseys/${jersey._id}`} key={jersey.name} onClick={onClick}>
-                            <div className="jersey-box" key={idx}>
-                                <img className="jersey-image" src={jersey.image} alt={jersey.team} />
-                                <h2 className="description">{jersey.name} {jersey.team} Jersey</h2>
-                                <p className="price">${jersey.price}</p>
-                            </div>
-                        </Link>
-                    </>
-                ))}
-            </div>
+            {!filterData ? <div className="jerseys-container"><h1>No results found.</h1></div> :
+                <div className="jerseys-container">
+                    {filterData.map((jersey, idx) => (
+                        <>
+                            <Link className="jersey-link" to={`/jerseys/${jersey._id}`} key={jersey.name} onClick={onClick}>
+                                <div className="jersey-box" key={idx}>
+                                    <img className="jersey-image" src={jersey.image} alt={jersey.team} />
+                                    <h2 className="description">{jersey.name} {jersey.team} Jersey</h2>
+                                    <p className="price">${jersey.price}</p>
+                                </div>
+                            </Link>
+                        </>
+                    ))}
+                </div>
+            }
         </>
     );
 }

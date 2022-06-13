@@ -85,15 +85,3 @@
         flex-direction: column;
     }
 }
-
-@media screen and (max-width: 645px) {
-    .view-jersey-image {
-        height: 300px;
-    }
-}
-
-@media screen and (max-width: 470px) {
-    .view-jersey-image {
-        height: 240px;
-    }
-}

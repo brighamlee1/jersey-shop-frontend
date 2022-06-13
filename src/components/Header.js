@@ -19,7 +19,7 @@ function Header() {
                 <li><Link to="/jerseys">Jerseys</Link></li>
                 <li><Link to="/register">Register</Link></li>
                 <li><Link to="/login">Login</Link></li>
-                <li onClick={handleLogout}>Logout</li>
+                <li className="logout" onClick={handleLogout}>Logout</li>
             </ul>
         </nav>
     )

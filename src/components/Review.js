@@ -38,7 +38,6 @@ function Review(props) {
         try {
             const url = `http://localhost:4000/jerseys/${jerseyId}/review`;
             const res = await axios.post(url, review, { headers: { "Content-Type": "application/json" } })
-            // navigate(`/jerseys/${jerseyId}`)
             res.status(200).json(res);
         } catch (error) {
             console.log(error);
@@ -53,10 +52,6 @@ function Review(props) {
     }, []);
 
     const allReviews = reviews.data;
-
-    if (!reviews) {
-        return <h1>Loading ... </h1>
-    }
 
     return (
         <>
@@ -74,18 +69,21 @@ function Review(props) {
                     <input className="signup-button" type="submit" value="Submit Review" />
                 </form>
             </div>
-            <h1 className="reviews-title">Reviews</h1>
-            <div className="reviews">
-                {allReviews.slice(0).reverse().map((review, idx) => {
-                    const list = (
-                        <div className="review" key={idx}>
-                            <p className="review-stars"><i className="fa-solid fa-star"></i> {review.stars}</p>
-                            <h2 className="review-text">{review.text}</h2>
-                        </div>
-                    )
-                    return list;
-                })}
-            </div>
+            
+            <>
+                <h1 className="reviews-title">Reviews</h1>
+                <div className="reviews">
+                    {allReviews?.slice(0).reverse().map((review, idx) => {
+                        const list = (
+                            <div className="review" key={idx}>
+                                <p className="review-stars"><i className="fa-solid fa-star"></i> {review.stars}</p>
+                                <h2 className="review-text">{review.text}</h2>
+                            </div>
+                        )
+                        return list;
+                    })}
+                </div>
+            </>
         </>
     )
 }

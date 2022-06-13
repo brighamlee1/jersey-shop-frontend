@@ -2,7 +2,6 @@
     display: grid;
     justify-content: center;
     grid-template-rows: 50px 90px;
-    margin-bottom: px;
     border-bottom: 1px solid rgb(179, 179, 179);
 }
 
@@ -30,24 +29,43 @@
     text-underline-offset: 4px;
 }
 
+.logout {
+    font-size: 16px;
+    text-decoration: none;
+    color: rgb(99, 99, 99);
+}
+
+.logout:hover {
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    cursor: pointer;
+}
+
 .navbar h3 {
     font-size: 24px;
     margin: auto;
     margin-bottom: none;
-    display: flex;
-    align-self: flex-end;
     font-family: 'PT Mono', monospace;
     text-align: center;
+    width: 40vw;
 }
 
 @media screen and (max-width: 775px) {
     .navbar ul {
         width: 60vw;
     }
+
+    .navbar h3 {
+        width: 60vw;
+    }
 }
 
 @media screen and (max-width: 550px) {
     .navbar ul {
+        width: 90vw;
+    }
+
+    .navbar h3 {
         width: 90vw;
     }
 }
