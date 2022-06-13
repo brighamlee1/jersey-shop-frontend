@@ -12,7 +12,7 @@ function Jerseys(props) {
         })
     }
     )
-    const url = props.url + '/jerseys';
+    const url = `http://localhost:4000/jerseys`
     const getJerseysData = async () => {
         const response = await fetch(url);
         const data = await response.json();

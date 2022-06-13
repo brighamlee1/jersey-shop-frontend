@@ -8,17 +8,17 @@ import Login from './pages/Login'
 
 function App() {
 
-  const URL = "https://jersey-shop-backend.herokuapp.com"
+  // const URL = "http://localhost:4000"
 
   return (
     <div className="App">
       <Header />
       <Routes>
         <Route path="/" element={ <Navigate to="/jerseys"/> } />
-        <Route path='/jerseys' element={<Jerseys URL={URL} />} />
-        <Route path='/jerseys/:id' element={<JerseyView URL={URL} />} />
-        <Route path="/register" element={<Register URL={URL} />} />
-        <Route path="/login" element={<Login URL={URL} />} />
+        <Route path='/jerseys' element={<Jerseys />} />
+        <Route path='/jerseys/:id' element={<JerseyView />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/login" element={<Login />} />
       </Routes>
     </div>
   );

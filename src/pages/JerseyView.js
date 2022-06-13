@@ -11,7 +11,7 @@ function JerseyView(props) {
   const params = useParams();
   const jerseyId = params.id;
 
-  const url = `${props.URL}/jerseys/${jerseyId}`
+  const url = `http://localhost:4000/jerseys/${jerseyId}`
 
   const getJersey = async () => {
     const response = await fetch(url);
