@@ -1,6 +1,7 @@
 .navbar {
     display: grid;
     justify-content: center;
+    grid-template-columns: auto auto;
     grid-template-rows: 50px 90px;
     border-bottom: 1px solid rgb(179, 179, 179);
 }
@@ -41,13 +42,22 @@
     cursor: pointer;
 }
 
-.navbar h3 {
+.header-title {
     font-size: 24px;
     margin: auto;
     margin-bottom: none;
     font-family: 'PT Mono', monospace;
     text-align: center;
     width: 40vw;
+}
+
+.header-top {
+    float: right;
+    margin-right: auto;
+}
+
+.header-top img {
+    height: 70px;
 }
 
 @media screen and (max-width: 775px) {

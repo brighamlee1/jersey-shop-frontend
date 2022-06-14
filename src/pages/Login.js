@@ -20,9 +20,25 @@ function Login(props) {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const url = 'http://localhost:4000/auth/login';
-            await axios.post(url, data, { headers: { "Content-Type": "application/json" } });
-            navigate("/jerseys")
+            const response = await fetch('http://localhost:4000/auth/login', {
+                method: 'POST',
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    ...data,
+                }),
+            });
+            const data2 = await response.json();
+
+            if (data2.user) {
+                localStorage.setItem("accessToken", data2.user);
+                navigate("/jerseys");
+                window.location.reload();
+            } else {
+                alert("Please check username and password");
+            }
+            // await axios.post(url, data, { headers: { "Content-Type": "application/json" } });
         } catch (error) {
             console.log(error);
         }
