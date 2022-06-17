@@ -1,6 +1,5 @@
 import './App.css';
 import { Route, Routes, Navigate } from 'react-router-dom';
-import { useEffect, useState } from 'react';
 import Jerseys from './pages/Jerseys';
 import Register from './pages/Register';
 import JerseyView from './pages/JerseyView';

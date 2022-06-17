@@ -1,12 +1,11 @@
 import '../styles/review.css';
 import { useState, useEffect } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import '../styles/wishlist.css';
 
 function Wishlist() {
     const currentUserId = localStorage.getItem("id");
     const [wishlist, setWishlist] = useState(null);
-    const currentUsername = localStorage.getItem("username");
     const params = useParams();
     let userId = params.id;
     userId = currentUserId;
@@ -35,7 +34,7 @@ function Wishlist() {
         return <h1>No Results Found</h1>
     }
     const jerseys = wishlist.wishListJersey;
-    
+
     return (
         <div className="wishlist-big-container">
             <h2>Your Wishlist</h2>

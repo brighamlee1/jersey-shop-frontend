@@ -45,7 +45,7 @@ function Header() {
     useEffect(() => {
         populateUserData();
     })
-
+    console.log(profile);
     const user = localStorage.getItem("accessToken");
 
     return (
