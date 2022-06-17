@@ -33,7 +33,6 @@ function Register(props) {
             if (data2.status === "ok") {
                 navigate("/login")
             }
-            // await axios.post(url, data, { headers: { "Content-Type": "application/json" } })
         } catch (error) {
             console.log(error);
         }

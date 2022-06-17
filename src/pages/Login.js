@@ -30,9 +30,12 @@ function Login(props) {
                 }),
             });
             const data2 = await response.json();
-
+            console.log(data2.user);
             if (data2.user) {
                 localStorage.setItem("accessToken", data2.user);
+                localStorage.setItem("username", data2.username)
+                localStorage.setItem("profile", data2.profile)
+                localStorage.setItem("id", data2.id)
                 navigate("/jerseys");
                 window.location.reload();
             } else {

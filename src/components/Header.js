@@ -32,6 +32,9 @@ function Header() {
         if (token) {
             console.log(token)
             localStorage.removeItem("accessToken");
+            localStorage.removeItem("username");
+            localStorage.removeItem("profile");
+            localStorage.removeItem("id");
             navigate("/login");
             window.location.reload();
         } else {
@@ -43,19 +46,30 @@ function Header() {
         populateUserData();
     })
 
+    const user = localStorage.getItem("accessToken");
+
     return (
         <>
-            <h3 className="header-title">Jersey Closet</h3>
-            <div className="header-top">
-                <img src={profile} alt={username} />
-                <span>{username}</span>
-            </div>
+            <h3><Link className="header-title" to="/jerseys">Jersey Closet</Link></h3>
             <nav className="navbar">
                 <ul>
                     <li><Link to="/jerseys">Jerseys</Link></li>
-                    <li><Link to="/register">Register</Link></li>
-                    <li><Link to="/login">Login</Link></li>
-                    <li className="logout" onClick={handleLogout}>Logout</li>
+                    {user ? <></> :
+                        <li><Link to="/register">Register</Link></li>
+                    }
+                    {user ? <></> :
+                        <li><Link to="/login">Login</Link></li>
+                    }
+                    {!user ? <></> :
+                        <li>Welcome {username}</li>
+                    }
+                    {!user ? <></> :
+                        <li className="logout" onClick={handleLogout}>Logout</li>
+                    }
+                    {!user ? <></> :
+                        <li><Link to="/wishlist">Wishlist</Link></li>
+                    }
+
                 </ul>
             </nav>
         </>

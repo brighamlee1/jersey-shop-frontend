@@ -4,11 +4,15 @@ import { useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
 
 function Review(props) {
+    const currentUser = localStorage.getItem("username");
+
     const initialReview = {
         stars: Number,
         text: '',
         date: '',
+        username: currentUser
     };
+
     const [reviews, setReviews] = useState('');
     const [review, setReview] = useState(initialReview);
 
@@ -20,7 +24,7 @@ function Review(props) {
     const getReviews = async () => {
         const response = await axios.get(`http://localhost:4000/jerseys/${jerseyId}/review`, { headers: { "Content-Type": "application/json" } })
         setReviews(response);
-        navigate(window.location);
+        // navigate(window.location);
     }
 
     const handleChange = ({ currentTarget: input }) => {
@@ -29,16 +33,21 @@ function Review(props) {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        const user = localStorage.getItem("accessToken");
         if (review.stars > 5) {
             return alert('You may not rate this jersey more than 5 stars')
         }
         else if (review.stars < 1) {
             return alert('You may not rate this jersey less than 1 star')
         }
+        else if (!user) {
+            return alert('You must be signed in to make a review')
+        }
         try {
             const url = `http://localhost:4000/jerseys/${jerseyId}/review`;
             const res = await axios.post(url, review, { headers: { "Content-Type": "application/json" } })
             res.status(200).json(res);
+            navigate(window.location)
         } catch (error) {
             console.log(error);
         }
@@ -52,6 +61,7 @@ function Review(props) {
     }, []);
 
     const allReviews = reviews.data;
+    // console.log(allReviews)
 
     return (
         <>
@@ -69,14 +79,15 @@ function Review(props) {
                     <input className="signup-button" type="submit" value="Submit Review" />
                 </form>
             </div>
-            
+
             <>
                 <h1 className="reviews-title">Reviews</h1>
                 <div className="reviews">
-                    {allReviews?.slice(0).reverse().map((review, idx) => {
+                    {allReviews?.slice(0)?.reverse()?.map((review, idx) => {
                         const list = (
                             <div className="review" key={idx}>
-                                <p className="review-stars"><i className="fa-solid fa-star"></i> {review.stars}</p>
+                                <p className="date">{new Date(review.createdAt).toLocaleString()}</p>
+                                <p className="review-stars"><i className="fa-solid fa-star"></i> {review.stars} <span className="username">{review.user.username}</span> </p>
                                 <h2 className="review-text">{review.text}</h2>
                             </div>
                         )

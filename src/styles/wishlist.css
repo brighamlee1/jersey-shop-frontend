@@ -1,0 +1,75 @@
+.wishlist-container {
+    display: flex;
+    justify-content: center;
+}
+
+.wishlist {
+    display: flex;
+    flex-direction: row;
+    justify-items: start;
+    align-items: center;
+    border-bottom: 1px solid rgb(179, 179, 179);
+    padding-bottom: 20px;
+    width: 80vw;
+}
+
+.wishlist-labels-container {
+    display: flex;
+    justify-content: center;
+}
+
+.wishlist-labels {
+    display: flex;
+    flex-direction: row;
+    justify-items: start;
+    align-items: center;
+    height: 60px;
+    border-bottom: 1px solid rgb(179, 179, 179);
+    margin-bottom: 20px;
+    width: 80vw;
+}
+
+.wishlist-image {
+    height: 160px;
+    width: 140px;
+    margin-right: 10px;
+}
+
+.wishlist-name {
+    width: 300px;
+    text-align: left;
+    margin: 0;
+    margin-right: 10px;
+}
+
+.wishlist-size {
+    width: 140px;
+    text-align: left;
+}
+
+.wishlist-price {
+    width: 150px;
+    text-align: left;
+}
+
+.label-product {
+    width: 140px;
+    margin-right: 10px;
+}
+
+.label-blank {
+    width: 300px;
+    text-align: left;
+    margin: 0;
+    margin-right: 10px;
+}
+
+.label-size {
+    width: 140px;
+    text-align: left;
+}
+
+.label-price {
+    width: 150px;
+    text-align: left;
+}

@@ -49,6 +49,14 @@
     border: none;
     color: whitesmoke;
     font-family: Helvetica, sans-serif;
+    transition: .35s;
+}
+
+.wishlist-button:hover {
+    background-color: white;
+    color: #3A3A3A;
+    border: 1px solid #3A3A3A;
+    cursor: pointer;
 }
 
 @media screen and (max-width: 1030px) {
