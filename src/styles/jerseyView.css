@@ -61,11 +61,11 @@
 
 @media screen and (max-width: 1030px) {
     .wishlist-button {
-        width: 250px;
+        width: 300px;
     }
 
     .select-size {
-        width: 150px;
+        width: 250px;
     }
 
     .view-description {
@@ -83,8 +83,9 @@
 
     .view-jersey-image {
         height: 450px;
+        width: 350px;
         margin-top: 50px;
-        margin-right: 0;
+        margin: auto;
     }
 
     .view-jersey-image-box {
@@ -97,6 +98,7 @@
 @media screen and (max-width: 645px) {
     .view-jersey-image {
         height: 300px;
+        width: 260px;
     }
 }
 

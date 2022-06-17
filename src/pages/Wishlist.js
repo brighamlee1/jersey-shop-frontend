@@ -12,7 +12,7 @@ function Wishlist() {
     userId = currentUserId;
 
     const getWishlist = async () => {
-        const response = await fetch(`http://localhost:4000/jerseys/${userId}/wishlist`, {
+        const response = await fetch(`https://jersey-shop-backend.herokuapp.com/jerseys/${userId}/wishlist`, {
             method: 'GET',
             headers: {
                 "Content-Type": "application/json",
@@ -22,45 +22,49 @@ function Wishlist() {
         setWishlist(data2);
     }
 
-    const runCallback = (cb) => {
-        return cb();
-    }
-
     useEffect(() => {
         getWishlist();
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
+
     if (wishlist) {
         console.log(wishlist)
     }
+
     if (!wishlist) {
         return <h1>No Results Found</h1>
     }
-    const sizes = wishlist.wishlistSize;
     const jerseys = wishlist.wishListJersey;
+    
     return (
         <div className="wishlist-big-container">
             <h2>Your Wishlist</h2>
             <div className="wishlist-labels-container">
                 <div className="wishlist-labels">
                     <p className="label-product">PRODUCT</p>
-                    <p className="label-blank"></p>
-                    <p className="label-size">SIZE</p>
-                    <p className="label-price">PRICE</p>
+                    <div className="wishlist-labels-data">
+                        <p className="label-blank"></p>
+                        <p className="label-size">SIZE</p>
+                        <p className="label-price">PRICE</p>
+                    </div>
                 </div>
             </div>
-            <div className="wishlist-container">
-                {
-                    jerseys.map((jersey) => (
+            {
+                jerseys.map((jersey) => (
+                    <div className="wishlist-container">
                         <div className="wishlist">
-                            <img className="wishlist-image" src={jersey.image} alt={jersey.name} />
-                            <h3 className="wishlist-name">{jersey.name} {jersey.team} Jersey</h3>
-                            <p className="wishlist-size">{jersey.size}</p>
-                            <p className="wishlist-price">${jersey.price}</p>
+                            <div className="wishlist-image-box">
+                                <img className="wishlist-image" src={jersey.image} alt={jersey.name} />
+                            </div>
+                            <div className="wishlist-data">
+                                <h3 className="wishlist-name">{jersey.name} {jersey.team} Jersey</h3>
+                                <p className="wishlist-size">{jersey.size}</p>
+                                <p className="wishlist-price">${jersey.price}</p>
+                            </div>
                         </div>
-                    ))
-                }
-            </div>
+                    </div>
+                ))
+            }
         </div>
     )
 }

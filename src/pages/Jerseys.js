@@ -14,7 +14,7 @@ function Jerseys(props) {
         })
     }
     )
-    const url = `http://localhost:4000/jerseys`
+    const url = `https://jersey-shop-backend.herokuapp.com/jerseys`
     const getJerseysData = async () => {
         const response = await fetch(url);
         const data = await response.json();

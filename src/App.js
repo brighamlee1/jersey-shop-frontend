@@ -7,18 +7,9 @@ import JerseyView from './pages/JerseyView';
 import Header from './components/Header';
 import Login from './pages/Login';
 import Wishlist from './pages/Wishlist';
+import Footer from './components/Footer';
 
 function App() {
-
-  // const getUsers = () => {
-  //   fetch(URL)
-  //     .then(response => response.json())
-  //     .then(result => setUser(result))
-  // }
-
-  // useEffect(() => {
-  //   getUsers();
-  // }, [])
 
   return (
     <div className="App">
@@ -31,6 +22,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/wishlist" element={<Wishlist />} />
       </Routes>
+      <Footer />
     </div>
   );
 }

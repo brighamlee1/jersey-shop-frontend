@@ -22,7 +22,7 @@ function Review(props) {
     const navigate = useNavigate();
 
     const getReviews = async () => {
-        const response = await axios.get(`http://localhost:4000/jerseys/${jerseyId}/review`, { headers: { "Content-Type": "application/json" } })
+        const response = await axios.get(`https://jersey-shop-backend.herokuapp.com/jerseys/${jerseyId}/review`, { headers: { "Content-Type": "application/json" } })
         setReviews(response);
         // navigate(window.location);
     }
@@ -59,9 +59,8 @@ function Review(props) {
         getReviews();
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
-
     const allReviews = reviews.data;
-    // console.log(allReviews)
+    console.log(allReviews)
 
     return (
         <>
@@ -81,19 +80,24 @@ function Review(props) {
             </div>
 
             <>
-                <h1 className="reviews-title">Reviews</h1>
-                <div className="reviews">
-                    {allReviews?.slice(0)?.reverse()?.map((review, idx) => {
-                        const list = (
-                            <div className="review" key={idx}>
-                                <p className="date">{new Date(review.createdAt).toLocaleString()}</p>
-                                <p className="review-stars"><i className="fa-solid fa-star"></i> {review.stars} <span className="username">{review.user.username}</span> </p>
-                                <h2 className="review-text">{review.text}</h2>
-                            </div>
-                        )
-                        return list;
-                    })}
-                </div>
+                {!allReviews ? (<h1>No Reviews Found</h1>) : (
+                    <>
+                        <h1 className="reviews-title">Reviews</h1>
+                        <div className="reviews">
+                            {allReviews?.slice(0)?.reverse()?.map((review, idx) => {
+                                const list = (
+                                    <div className="review" key={idx}>
+                                        <p className="date">{new Date(review.createdAt).toLocaleString()}</p>
+                                        <p className="review-stars"><i className="fa-solid fa-star"></i> {review.stars} <span className="username">{review.user.username}</span> </p>
+                                        <h2 className="review-text">{review.text}</h2>
+                                    </div>
+                                )
+                                return list;
+                            })}
+                        </div>
+                    </>
+                )
+                }
             </>
         </>
     )
