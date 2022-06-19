@@ -36,7 +36,6 @@ function Header() {
             localStorage.removeItem("profile");
             localStorage.removeItem("id");
             navigate("/login");
-            window.location.reload();
         } else {
             return
         }

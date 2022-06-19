@@ -24,7 +24,6 @@ function Review(props) {
     const getReviews = async () => {
         const response = await axios.get(`https://jersey-shop-backend.herokuapp.com/jerseys/${jerseyId}/review`, { headers: { "Content-Type": "application/json" } })
         setReviews(response);
-        // navigate(window.location);
     }
 
     const handleChange = ({ currentTarget: input }) => {
