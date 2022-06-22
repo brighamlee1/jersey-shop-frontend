@@ -8,7 +8,7 @@ function Header() {
     const [profile, setProfile] = useState("")
 
     async function populateUserData() {
-        const req = await fetch('http://localhost:4000/auth/status', {
+        const req = await fetch('https://jersey-shop-backend.herokuapp.com/auth/status', {
             headers: {
                 "x-acess-token": localStorage.getItem("accessToken"),
             }
@@ -26,7 +26,7 @@ function Header() {
     const navigate = useNavigate();
 
     const handleLogout = async () => {
-        const url = 'http://localhost:4000/auth/logout';
+        const url = 'https://jersey-shop-backend.herokuapp.com/auth/logout';
         await axios.post(url, { headers: { "Content-Type": "application/json" } });
         const token = localStorage.getItem("accessToken");
         if (token) {
