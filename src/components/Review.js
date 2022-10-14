@@ -43,7 +43,7 @@ function Review(props) {
             return alert('You must be signed in to make a review')
         }
         try {
-            const url = `http://localhost:4000/jerseys/${jerseyId}/review`;
+            const url = `https://jersey-shop-backend.herokuapp.com/jerseys/${jerseyId}/review`;
             const res = await axios.post(url, review, { headers: { "Content-Type": "application/json" } })
             res.status(200).json(res);
             navigate(window.location)
