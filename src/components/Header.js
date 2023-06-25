@@ -8,7 +8,7 @@ function Header() {
     const [profile, setProfile] = useState("")
 
     async function populateUserData() {
-        const req = await fetch('https://jersey-shop-backend.herokuapp.com/auth/status', {
+        const req = await fetch('https://jersey-closet.onrender.com/auth/status', {
             headers: {
                 "x-acess-token": localStorage.getItem("accessToken"),
             }
@@ -26,7 +26,7 @@ function Header() {
     const navigate = useNavigate();
 
     const handleLogout = async () => {
-        const url = 'https://jersey-shop-backend.herokuapp.com/auth/logout';
+        const url = 'https://jersey-closet.onrender.com/auth/logout';
         await axios.post(url, { headers: { "Content-Type": "application/json" } });
         const token = localStorage.getItem("accessToken");
         if (token) {

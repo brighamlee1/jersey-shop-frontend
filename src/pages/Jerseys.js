@@ -14,7 +14,7 @@ function Jerseys(props) {
         })
     }
     )
-    const url = `https://jersey-shop-backend.herokuapp.com/jerseys`
+    const url = `https://jersey-closet.onrender.com/jerseys`
     const getJerseysData = async () => {
         const response = await fetch(url);
         const data = await response.json();
@@ -26,8 +26,6 @@ function Jerseys(props) {
     const handleChange = async (e) => {
         await e.preventDefault();
         setSearch(e.target.value.toLowerCase());
-        console.log(e.target.value.toLowerCase())
-        console.log(filterData)
     }
 
     const onClick = () => {

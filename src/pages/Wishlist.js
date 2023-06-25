@@ -11,7 +11,7 @@ function Wishlist() {
     userId = currentUserId;
 
     const getWishlist = async () => {
-        const response = await fetch(`https://jersey-shop-backend.herokuapp.com/jerseys/${userId}/wishlist`, {
+        const response = await fetch(`https://jersey-closet.onrender.com/jerseys/${userId}/wishlist`, {
             method: 'GET',
             headers: {
                 "Content-Type": "application/json",

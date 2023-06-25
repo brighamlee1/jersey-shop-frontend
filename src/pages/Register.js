@@ -19,7 +19,7 @@ function Register(props) {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await fetch('https://jersey-shop-backend.herokuapp.com/auth/register', {
+            const response = await fetch('https://jersey-closet.onrender.com/auth/register', {
                 method: 'POST',
                 headers: {
                     "Content-Type": "application/json",

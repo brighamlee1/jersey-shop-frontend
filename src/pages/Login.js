@@ -19,7 +19,7 @@ function Login(props) {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await fetch('https://jersey-shop-backend.herokuapp.com/auth/login', {
+            const response = await fetch('https://jersey-closet.onrender.com/auth/login', {
                 method: 'POST',
                 headers: {
                     "Content-Type": "application/json",

@@ -22,7 +22,6 @@ function JerseyView(props) {
     e.preventDefault();
     const selectedSize = e.target.value;
     setSize(selectedSize)
-    console.log(size)
   }
 
   const handleSubmit = async (e) => {
@@ -31,7 +30,7 @@ function JerseyView(props) {
       alert('You must login to add to your wishlist')
     }
     try {
-      const response = await fetch(`https://jersey-shop-backend.herokuapp.com/jerseys/${jerseyId}/wishlist`, {
+      const response = await fetch(`https://jersey-closet.onrender.com/jerseys/${jerseyId}/wishlist`, {
         method: 'POST',
         headers: {
           "Content-Type": "application/json",
@@ -49,21 +48,13 @@ function JerseyView(props) {
     setItem(initialState);
   }
 
-  const url = `https://jersey-shop-backend.herokuapp.com/jerseys/${jerseyId}`
+  const url = `https://jersey-closet.onrender.com/jerseys/${jerseyId}`
 
   const getJersey = async () => {
     const response = await fetch(url);
     const data = await response.json();
     setJersey(data);
   }
-
-  // const url2 = `http://localhost:4000/jerseys/${jerseyId}`
-
-  // const getSize = async () => {
-  //   const response = await fetch(url2);
-  //   const data = await response.json();
-  //   setSize(data);
-  // }
 
   useEffect(() => {
     getJersey();
